@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kod Giriş Sayfası</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="code-entry-container">
+        <h1>Kodunuzu Girin</h1>
+        <p>Lütfen size verilen kodu aşağıdaki alana girin ve gönder düğmesine tıklayın.</p>
+        <input type="text" id="codeInput" placeholder="Kodunuzu buraya yazın">
+        <button onclick="submitCode()">Gönder</button>
+        <p class="error-message" id="errorMessage">Lütfen geçerli bir kod girin!</p>
+    </div>
+
+    <script>
+        // Kod Gönderme İşlevi
+        function submitCode() {
+            const codeInput = document.getElementById("codeInput");
+            const errorMessage = document.getElementById("errorMessage");
+
+            // Boş veya geçersiz kod kontrolü
+            if (!codeInput.value.trim()) {
+                errorMessage.style.display = "block"; // Hata mesajını göster
+            } else {
+                errorMessage.style.display = "none"; // Hata mesajını gizle
+                alert(`Kodunuz başarıyla gönderildi: ${codeInput.value}`); // Örnek işlem
+            }
+        }
+    </script>
+</body>
+</html>

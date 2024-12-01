@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sosyal Medya Yönetim Paneli</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="topbar">
+    <h3>Yönetim Paneli</h3>
+    
+    <ul>
+      <li class="active" onclick="loadCustomerList()">👥 Müşteri Listesi</li>
+      <li onclick="loadAccountManagement()">🔒 Hesap Yönetimi</li>
+      <li onclick="loadChatBot()">🤖 Metin Botu</li>
+      <li ><a href=""></a>🚪 Çıkış Yap</li>
+    </ul>
+  </div>
+
+  <div class="content" id="content">
+    <h2>Hoş Geldiniz!</h2>
+    <p>Yönetim panelinden seçim yaparak detaylara erişebilirsiniz.</p>
+  </div>
+
+  <script>
+    function loadCustomerList() {
+      document.getElementById('content').innerHTML = `
+        <div class="customer-list">
+          <h1>Müşteri Listesi</h1>
+          <input type="text" id="searchInput" placeholder="Müşteri adı veya e-posta ara..." onkeyup="filterCustomers()">
+          <table class="customer-table">
+            <thead>
+              <tr>
+                <th>Adı</th>
+                <th>E-posta</th>
+                <th>Telefon</th>
+              </tr>
+            </thead>
+            <tbody id="customerTableBody">
+              <tr><td colspan="3">Müşteri verileri yükleniyor...</td></tr>
+            </tbody>
+          </table>
+        </div>
+      `;
+      const customers = [
+        { name: "Ahmet Yılmaz", email: "ahmet@gmail.com", phone: "555-123-4567" },
+        { name: "Ayşe Demir", email: "ayse@hotmail.com", phone: "555-987-6543" },
+      ];
+      const tableBody = document.getElementById('customerTableBody');
+      tableBody.innerHTML = customers
+        .map(
+          (customer) => 
+            `<tr>
+              <td>${customer.name}</td>
+              <td>${customer.email}</td>
+              <td>${customer.phone}</td>
+            </tr>`
+        )
+        .join('');
+    }
+  function filterCustomers() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const tableBody = document.getElementById('customerTableBody');
+    const customers = [
+      { name: "Ahmet Yılmaz", email: "ahmet@gmail.com", phone: "555-123-4567" },
+      { name: "Ayşe Demir", email: "ayse@hotmail.com", phone: "555-987-6543" },
+    ];
+
+    const filteredCustomers = customers.filter(
+      (customer) =>
+        customer.name.toLowerCase().includes(searchInput) ||
+        customer.email.toLowerCase().includes(searchInput)
+    );
+
+    if (filteredCustomers.length > 0) {
+      tableBody.innerHTML = filteredCustomers
+        .map(
+          (customer) => `
+            <tr>
+              <td>${customer.name}</td>
+              <td>${customer.email}</td>
+              <td>${customer.phone}</td>
+            </tr>
+          `
+        )
+        .join('');
+    } else {
+      tableBody.innerHTML = `<tr><td colspan="3">Sonuç bulunamadı.</td></tr>`;
+    }
+  }  function filterCustomers() {
+    const searchInput = document.getElementById('searchInput').value.toLowerCase();
+    const tableBody = document.getElementById('customerTableBody');
+    const customers = [
+      { name: "Ahmet Yılmaz", email: "ahmet@gmail.com", phone: "555-123-4567" },
+      { name: "Ayşe Demir", email: "ayse@hotmail.com", phone: "555-987-6543" },
+    ];
+
+    const filteredCustomers = customers.filter(
+      (customer) =>
+        customer.name.toLowerCase().includes(searchInput) ||
+        customer.email.toLowerCase().includes(searchInput)
+    );
+
+    if (filteredCustomers.length > 0) {
+      tableBody.innerHTML = filteredCustomers
+        .map(
+          (customer) => `
+            <tr>
+              <td>${customer.name}</td>
+              <td>${customer.email}</td>
+              <td>${customer.phone}</td>
+            </tr>
+          `
+        )
+        .join('');
+    } else {
+      tableBody.innerHTML = `<tr><td colspan="3">Sonuç bulunamadı.</td></tr>`;
+    }
+  }
+    function loadAccountManagement() {
+      document.getElementById('content').innerHTML = `
+        <div class="account-container">
+          <div class="account-header">
+            <h1>Hesap Yönetimi</h1>
+          </div>
+          <div class="account-details">
+            <div class="detail"><span>Paket Adı:</span><span>Premium Plan</span></div>
+            <div class="detail"><span>Başlangıç Tarihi:</span><span>05.11.2024</span></div>
+            <div class="detail"><span>Bitiş Tarihi:</span><span>05.12.2024</span></div>
+            <div class="detail"><span>Kalan Gün:</span><span id="daysLeft">16 Gün</span></div>
+          </div>
+          <div class="progress-bar">
+            <div class="progress-bar-inner" id="progressBarInner" style="width: 80%;"></div>
+          </div>
+          <a href="#" class="renew-button">Paketinizi Yenileyin</a>
+        </div>
+      `;
+    }
+    function loadChatBot() {
+      document.getElementById('content').innerHTML = `
+        <div class="chat-container">
+          <h1>Metin Botu</h1>
+          <div class="message-area" id="messageArea"></div>
+          <div class="input-container">
+            <input type="text" id="userInput" placeholder="Bir mesaj yazın...">
+            <button onclick="sendMessage()">Gönder</button>
+          </div>
+        </div>
+      `;
+    }
+
+    function loadChatBot() {
+      document.getElementById('content').innerHTML = `
+        <div class="chat-container">
+          <h1>Metin Botu</h1>
+          <div class="message-area" id="messageArea"></div>
+          <div class="input-container">
+            <input type="text" id="userInput" placeholder="Bir mesaj yazın...">
+            <button onclick="sendMessage()">Gönder</button>
+          </div>
+          <div class="rule-editor">
+            <h2>Kurallar</h2>
+            <div id="rules"></div>
+            <button class="add-rule-button" onclick="addRule()">Kural Ekle</button>
+          </div>
+        </div>
+      `;
+
+      initializeChatbot();
+    }
+
+    const rules = []; // Dinamik kuralların saklandığı dizi
+
+    // Mesaj gönderme işlemi
+    function sendMessage() {
+      const userInput = document.getElementById('userInput').value;
+      if (!userInput) return;
+
+      // Kullanıcı mesajını ekle
+      addMessage(userInput, 'user-message');
+
+      // Kurallara göre yanıt bulun
+      const rule = rules.find(r => r.input === userInput);
+      const botResponse = rule ? rule.output : "Bunu anlayamadım.";
+
+      // Bot mesajını ekle
+      addMessage(botResponse, 'bot-message');
+
+      // Giriş alanını temizle
+      document.getElementById('userInput').value = '';
+    }
+
+    // Mesajları mesaj alanına ekle
+    function addMessage(text, className) {
+      const messageArea = document.getElementById('messageArea');
+      const message = document.createElement('div');
+      message.className = `message ${className}`;
+      message.innerText = text;
+      messageArea.appendChild(message);
+
+      // Otomatik kaydır
+      messageArea.scrollTop = messageArea.scrollHeight;
+    }
+
+    // Dinamik kural ekleme
+    function addRule(input = '', output = '') {
+      const rulesContainer = document.getElementById('rules');
+      const ruleIndex = rules.length;
+
+      // Kural yapısını oluştur
+      const rule = document.createElement('div');
+      rule.className = 'rule';
+
+      // Giriş ve çıkış alanları
+      const inputField = document.createElement('input');
+      inputField.type = 'text';
+      inputField.placeholder = 'Gelen mesaj';
+      inputField.value = input;
+      inputField.oninput = () => updateRule(ruleIndex, 'input', inputField.value);
+
+      const outputField = document.createElement('input');
+      outputField.type = 'text';
+      outputField.placeholder = 'Yanıt';
+      outputField.value = output;
+      outputField.oninput = () => updateRule(ruleIndex, 'output', outputField.value);
+
+      // Silme butonu
+      const deleteButton = document.createElement('button');
+      deleteButton.innerText = 'Sil';
+      deleteButton.onclick = () => deleteRule(ruleIndex, rule);
+
+      rule.appendChild(inputField);
+      rule.appendChild(outputField);
+      rule.appendChild(deleteButton);
+
+      rulesContainer.appendChild(rule);
+
+      // Varsayılan olarak yeni kuralı ekle
+      rules.push({ input, output });
+    }
+
+    // Kuralı güncelle
+    function updateRule(index, key, value) {
+      if (rules[index]) {
+        rules[index][key] = value;
+      }
+    }
+
+    // Kuralı sil
+    function deleteRule(index, ruleElement) {
+      if (rules[index]) {
+        rules.splice(index, 1); // Diziden sil
+      }
+      ruleElement.remove(); // DOM'dan sil
+    }
+
+    function initializeChatbot() {
+      // Varsayılan kurallar (istenirse eklenebilir)
+      rules.push(
+        { input: "Merhaba", output: "Merhaba! Size nasıl yardımcı olabilirim?" },
+        { input: "Nasılsın?", output: "Ben bir botum, ama teşekkür ederim! Siz nasılsınız?" }
+      );
+    }
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>

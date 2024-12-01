@@ -1,0 +1,356 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Ubuntu", sans-serif;
+}
+
+body {
+  font-family: "Ubuntu", serif;
+  background-color: #f8f8f8;
+}
+a{
+    text-decoration: none;
+    color: #000;
+}
+
+
+nav a.logo{
+    font-size: 33px;
+    color: #24fbe9c9;
+    font-weight: 600;
+}
+.auth-links {
+    display: flex;
+    align-items: center;
+}
+
+.auth-links a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: #43faf4;
+}
+
+.auth-links .button {
+    background-color: #24fbe9c9;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+.hero {
+    height: 80vh;
+    background: url('arkaplan.jpg') no-repeat center center/cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+header {
+    position: relative; /* Siyah tonlamanın düzgün çalışabilmesi için relative yapıyoruz */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: #968686; /* Gri arka plan (koyu gri ton) */
+    color: white;
+    box-shadow: 0 4px 6px rgba(248, 248, 248, 0.1);
+    z-index: 1;
+}
+
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.996); /* Siyah tonlama */
+    z-index: -1; /* Tonlamanın header arka planında kalması için negatif z-index */
+}
+
+
+.hero .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url(arkaplan.jpg);
+    background-size: cover;
+    background-position: bottom;
+    z-index: 1;
+}
+
+.hero .overlay::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Siyah tonlama */
+    z-index: 2;
+}
+
+.hero .content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero p {
+    font-size: 24px;
+    margin-bottom: 30px;
+}
+
+.hero button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #18133fc9;
+    color: white;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+}
+
+.hero button:hover {
+    background-color:#24fbe9c9;
+}
+
+.login{
+    transition: color 0.5s, background-color 0.5s;
+    
+
+}
+.login:hover{
+    color: white;
+    background-color: #24fbe9c9;
+}.help{
+    transition: color 0.5s, background-color 0.5s;
+    
+
+}
+.help:hover{
+    color: white;
+    background-color: #24fbe9c9;
+}
+.mission{
+    padding: 0 80px;
+    margin: 50px 0 80px;
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+}
+h2.separator {
+    padding: 0 80px;
+    font-size: 40px;
+    margin-top: 40px;
+}
+h2{
+    text-align: center;
+    margin-top: calc(1vh + 5px); /* Hero kısmından 10 piksel aşağıda */
+    font-size: 40px;
+}
+
+.mission .text
+{
+    padding: 20px;
+    background: #fff;
+    border-radius: 18px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+.mission .text .icon{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mission .text .icon i{
+    font-size: 40px;
+}
+
+.mission .text .icon h4{
+    font-size: 17px;
+}
+
+.mission .text p{
+    margin-top: 10px;
+    padding: 0 4px;
+}
+footer{
+    background-color: #000;
+    color: #fff;
+    padding: 100px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+footer h3{
+    font-size: 48px;
+}
+
+footer .right{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 26px;
+}
+
+footer .right .links{
+    display: flex;
+    gap: 30px;
+}
+
+footer .right .links a{
+    color: #989898;
+    transition: color 0.3s ease;
+}
+
+footer .right .links a:hover{
+    color: #fff;
+}
+
+footer .right .social{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+footer .right .social i{
+    font-size: 30px;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+footer .right .social i:hover{
+    color: #304ffe;
+}
+
+footer .right p{
+    font-size: 13px;
+    color: #777;
+}
+@media (max-width: 1024px) {
+    .auth-links a {
+        margin-left: 10px; /* Bağlantılar arasındaki boşluğu daralt */
+        padding: 8px 15px; /* Buton boyutlarını küçült */
+    }
+
+    .hero h1 {
+        font-size: 36px; /* Başlık yazısını küçült */
+    }
+
+    .hero p {
+        font-size: 18px; /* Paragraf yazısını küçült */
+    }
+
+    .mission {
+        flex-direction: column; /* Kartları alt alta yerleştir */
+        padding: 0 40px;
+    }
+
+    footer {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 40px;
+    }
+
+    footer h3 {
+        font-size: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        flex-direction: column; /* Header öğelerini alt alta yerleştir */
+        align-items: flex-start;
+    }
+
+    .auth-links {
+        margin-top: 10px;
+        flex-wrap: wrap; /* Bağlantılar dar alanda satır başına geçer */
+    }
+
+    .auth-links a {
+        margin: 5px 10px; /* Daha küçük boşluklar */
+    }
+
+    .hero {
+        height: 60vh; /* Hero kısmını küçült */
+    }
+
+    .hero h1 {
+        font-size: 28px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .mission {
+        padding: 0 20px;
+        gap: 20px;
+    }
+
+    .mission .text {
+        padding: 15px;
+    }
+
+    footer {
+        padding: 50px 20px;
+    }
+
+    footer h3 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 480px) {
+    .auth-links {
+        justify-content: center;
+    }
+
+    .auth-links a {
+        font-size: 14px; /* Buton yazılarını küçült */
+    }
+
+    .hero {
+        height: 50vh;
+    }
+
+    .hero h1 {
+        font-size: 24px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .mission .text p {
+        font-size: 14px;
+    }
+
+    footer h3 {
+        font-size: 24px;
+    }
+
+    footer .right {
+        align-items: center;
+    }
+
+    footer .right .links {
+        flex-direction: column;
+        gap: 10px;
+    }
+}

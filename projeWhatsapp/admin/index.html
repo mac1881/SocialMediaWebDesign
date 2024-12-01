@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <style>
+        /* Genel Stil */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f4f6f9;
+        }
+
+        /* Yan Menü */
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding-top: 20px;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+            font-weight: 600;
+            color: #ecf0f1;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            padding: 15px 20px;
+            cursor: pointer;
+        }
+
+        .sidebar ul li:hover {
+            background-color: #34495e;
+        }
+
+        /* İçerik Alanı */
+        .content {
+            flex-grow: 1;
+            padding: 20px;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #fff;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .header h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .header button {
+            padding: 10px 15px;
+            font-size: 16px;
+            color: #fff;
+            background-color: #3498db;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        .content-area {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .card {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: calc(33.333% - 20px);
+        }
+
+        .card h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .card p {
+            font-size: 16px;
+            color: #666;
+        }
+
+        /* Kullanıcılar Tablosu */
+        .user-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .user-table th, .user-table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .user-table th {
+            background-color: #3498db;
+            color: white;
+        }
+
+        .search-bar {
+            margin-bottom: 20px;
+        }
+
+        .search-bar input {
+            padding: 10px;
+            width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Yan Menü -->
+    <div class="sidebar">
+        <h2>Admin Panel</h2>
+        <ul>
+            <li onclick="showDashboard()">Dashboard</li>
+            <li onclick="showUsers()">Kullanıcılar</li>
+            <li ><a href=""></a>Çıkış</li>
+        </ul>
+    </div>
+
+    <!-- İçerik Alanı -->
+    <div class="content">
+        <!-- Üst Menü -->
+        <div class="header">
+            <h2 id="pageTitle">Dashboard</h2>
+            <button id="addButton" onclick="addNew()">Yeni Ekle</button>
+        </div>
+
+        <!-- Kart Alanı -->
+        <div class="content-area" id="contentArea">
+            <div class="card">
+                <h3>Kullanıcı Sayısı</h3>
+                <p>1,230</p>
+            </div>
+            <div class="card">
+                <h3>Gelir</h3>
+                <p>$4,500</p>
+            </div>
+            <div class="card">
+                <h3>Demo Sürüm</h3>
+                <p>20 kullanıcı şuan kullanıyor</p>
+            </div>
+            <div class="card">
+                <h3>Normal Sürüm</h3>
+                <p>20 kullanıcı şuan kullanıyor</p>
+            </div>
+            <div class="card">
+                <h3>Plus Sürüm</h3>
+                <p>27 kullanıcı şuan kullanıyor</p>
+            </div>
+            <div class="card">
+                <h3>Plus+ Sürüm</h3>
+                <p>25 kullanıcı şuan kullanıyor</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dashboard içeriğini göstermek için
+        function showDashboard() {
+            document.getElementById("pageTitle").innerText = "Dashboard";
+            document.getElementById("addButton").style.display = "block";
+            document.getElementById("contentArea").innerHTML = `
+                <div class="card">
+                    <h3>Kullanıcı Sayısı</h3>
+                    <p>1,230</p>
+                </div>
+                <div class="card">
+                    <h3>Gelir</h3>
+                    <p>$4,500</p>
+                </div>
+                <div class="card">
+                    <h3>Demo Sürüm</h3>
+                    <p>20 kullanıcı şuan kullanıyor</p>
+                </div>
+                <div class="card">
+                    <h3>Normal Sürüm</h3>
+                    <p>20 kullanıcı şuan kullanıyor</p>
+                </div>
+                <div class="card">
+                    <h3>Plus Sürüm</h3>
+                    <p>27 kullanıcı şuan kullanıyor</p>
+                </div>
+                <div class="card">
+                    <h3>Plus+ Sürüm</h3>
+                    <p>25 kullanıcı şuan kullanıyor</p>
+                </div>`;
+        }
+
+        // Kullanıcılar içeriğini göstermek için
+        function showUsers() {
+            document.getElementById("pageTitle").innerText = "Kullanıcılar";
+            document.getElementById("addButton").style.display = "none";
+            document.getElementById("contentArea").innerHTML = `
+                <div class="search-bar">
+                    <input type="text" id="searchInput" onkeyup="filterUsers()" placeholder="Ara: Ad, telefon veya sürüm...">
+                </div>
+                <table class="user-table" id="userTable">
+                    <thead>
+                        <tr>
+                            <th>Ad Soyad</th>
+                            <th>Telefon Numarası</th>
+                            <th>Alınan Sürüm</th>
+                            <th>Kalan Gün</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Ali Veli</td>
+                            <td>+90 555 123 45 67</td>
+                            <td>Plus Sürüm</td>
+                            <td>15 gün</td>
+                        </tr>
+                        <tr>
+                            <td>Ayşe Yılmaz</td>
+                            <td>+90 532 987 65 43</td>
+                            <td>Normal Sürüm</td>
+                            <td>30 gün</td>
+                        </tr>
+                        <tr>
+                            <td>Mehmet Can</td>
+                            <td>+90 542 654 32 10</td>
+                            <td>Plus+ Sürüm</td>
+                            <td>7 gün</td>
+                        </tr>
+                    </tbody>
+                </table>`;
+        }
+
+        // Kullanıcıları filtrelemek için
+        function filterUsers() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const table = document.getElementById("userTable");
+            const rows = table.getElementsByTagName("tr");
+
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName("td");
+                let match = false;
+
+                for (let j = 0; j < cells.length; j++) {
+                    if (cells[j].innerText.toLowerCase().includes(input)) {
+                        match = true;
+                        break;
+                    }
+                }
+
+                rows[i].style.display = match ? "" : "none";
+            }
+        }
+
+        // Yeni ekleme butonu
+        function addNew() {
+            alert("Yeni Ekleme İşlevi Henüz Hazır Değil.");
+        }
+
+        // Varsayılan olarak Dashboard'u göster
+        showDashboard();
+    </script>
+</body>
+</html>
